@@ -51,6 +51,7 @@ const getQuotes = async () => {
     let options = {
         method: 'GET',
         url: 'https://numbersapi.p.rapidapi.com/6/21/date',
+        // if i want to see the data, need to be false
         json: true,
         headers: {
             'x-rapidapi-host': 'numbersapi.p.rapidapi.com',
