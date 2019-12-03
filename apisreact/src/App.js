@@ -13,52 +13,145 @@ export default class App extends Component {
     weatherData: [], //state is assigned below in setState
     jokeData: [],
     quotesData: [],
-    loading: false
+    loading: false,
+    inputCity: "",
+    inputCountry: "",
+    // countrycode: "",
+    // city: "",
+    // temp: "",
+    // humidity: "",
+    // description: ""
   }
 
-  
-  async componentDidMount() {
-    this.setState({
-      loading: true
-    })
-    const response = await axios.get(`http://127.0.0.1:5000`);
+  callAPI = async () => {
+    let response = await axios.get(`http://127.0.0.1:5000/?city=${this.state.inputCity}&countrycode=${this.state.inputCountry}`);
     console.log(response) //data is inside the object obtained from the API
-    
+
     this.setState({
       // weatherData: response.data.weather.list[0].main,
       city: response.data.weather.list[0].name,
+      //.weather is from app.get
+      countrycode: response.data.weather.list[0].sys.country,
       temp: response.data.weather.list[0].main.temp,
-      humidity:response.data.weather.list[0].main.humidity,
-      description:response.data.weather.list[0].weather[0].description,
-      jokeData: response.data.joke.value,
-      quotesData: response.data.quotes,
+      humidity: response.data.weather.list[0].main.humidity,
+      description: response.data.weather.list[0].weather[0].description,
+      // jokeData: response.data..joke.value,
       loading: false
     })
-    console.log(this.state.jokeData)
+    console.log(response.data)
+    console.log(response.data.weather.list[0].sys.country)
+    // console.log(this.state.jokeData)
   }
+
+  onChangeHandler = (event) => {
+    this.setState({
+      inputCity: event.target.value
+    })
+  }
+
+  onChangeHandlerCountry = (event) => {
+    this.setState({
+      inputCountry: event.target.value
+    })
+  }
+
+
+  callJokeApi = async () => {
+    let response = await axios.get(`http://127.0.0.1:5000/`);
+    console.log(response) //data is inside the object obtained from the API
+
+    this.setState({
+
+      jokeData: response.data.joke.value,
+     
+    })
+    // console.log(response.data)
+    // console.log(this.state.jokeData)
+  }
+
+  // onChangeHandlerJoke = (event) => {
+  //   this.setState({
+  //     inputJoke: event.target.value
+  //   })
+  // }
+
+
   render() {
-    //variables here (inside the render before the return)
-    //we can loop inside an array with the method map()
-    //map takes a fn inside
-    // const manchesterWeather = this.state.weatherData.temp
-    const chuckJoke = this.state.jokeData;
+
     return (
+
       <div className="all">
+      <div>
+        <input className="" value={this.state.inputCity} onChange={this.onChangeHandler} placeholder="City"></input>
+        <input className="" value={this.state.inputCountry} onChange={this.onChangeHandlerCountry} placeholder="Country"></input>
+        <button type="button" onClick={this.callAPI}> Button </button>
+
         <div className="weather">
-        <WeatherComponent
-          city={this.state.city}
-          temperature={this.state.temp}
-          humidity={this.state.humidity}
-          description={this.state.description}
-          loading={this.state.loading} />
-        </div>
+          <WeatherComponent
+            city={this.state.city}
+            country={this.state.countrycode}
+            temperature={this.state.temp}
+            humidity={this.state.humidity}
+            description={this.state.description}
+          // loading={this.state.loading} 
+          />
+          </div>
+          </div>
+        <div>
         <div className="joke">
-        <Jokes data={this.state.jokeData} />
-        </div>
-        <Quotes quotes={this.state.quotesData}/>
+          <Jokes data={this.state.jokeData} />
+          </div>
+          {/* </div> */}
+
+      <button type="button" onClick={this.callJokeApi}> Button </button>
+      </div>
       </div>
     )
   }
+
+  // trying Monicas version
+  // async componentDidMount() {
+  //   this.setState({
+  //     loading: true
+  //   })
+  //   const response = await axios.get(`http://127.0.0.1:5000`);
+  //   console.log(response) //data is inside the object obtained from the API
+
+  //   this.setState({
+  //     // weatherData: response.data.weather.list[0].main,
+  //     city: response.data.weather.list[0].name,
+  //     temp: response.data.weather.list[0].main.temp,
+  //     humidity:response.data.weather.list[0].main.humidity,
+  //     description:response.data.weather.list[0].weather[0].description,
+  //     jokeData: response.data.joke.value,
+  //     quotesData: response.data.quotes,
+  //     loading: false
+  //   })
+  //   console.log(this.state.jokeData)
+  // }
+  // render() {
+  //   //variables here (inside the render before the return)
+  //   //we can loop inside an array with the method map()
+  //   //map takes a fn inside
+  //   // const manchesterWeather = this.state.weatherData.temp
+  //   const chuckJoke = this.state.jokeData;
+  //   return (
+  //     <div className="all">
+  //       <div className="weather">
+  //       <WeatherComponent
+  //         city={this.state.city}
+  //         temperature={this.state.temp}
+  //         humidity={this.state.humidity}
+  //         description={this.state.description}
+  //         loading={this.state.loading} />
+  //       </div>
+  //       <div className="joke">
+  //       <Jokes data={this.state.jokeData} />
+  //       </div>
+  //       <Quotes quotes={this.state.quotesData}/>
+  //     </div>
+  //   )
+  // }
 }
 
 
