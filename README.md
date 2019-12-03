@@ -47,7 +47,7 @@ npm i axios
 3. Create a user at the [OpenWeatherMap](https://openweathermap.org/) for a free API
 4. Copy your API key
 5. Create a variable called APPID in the .env file and paste your key there
-6. Create a user at the [RapidAPI](https://rapidapi.com/) for a free API
+6. Create a user at the [RapidAPI](https://rapidapi.com/matchilling/api/chuck-norris) for a free Chuck Norris API
 7. Copy your API key
 8. Create a variable called APPIDD in the .env file and paste your key there
 9. In the MERN-master folder run node server.js
