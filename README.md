@@ -6,6 +6,7 @@ Project about combining together front-end and back-end using MongoDB, Express.j
 I have done few projects with front-end and back-end. Now I want to connect them together. MongoDB - login area, which will save your details and takes the user to her profile. Express.js and Node.js for the back-end, to get the information from the API. React for the front-end to display all the information
 
 ## What have i achieved so far?
+* Connected front-end and back-end
 * OpenWeatherMap API is displaying current weather when inserting city and country
 * Chuck Norris API is displaying a joke
 
