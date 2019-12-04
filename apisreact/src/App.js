@@ -12,10 +12,12 @@ export default class App extends Component {
   state = {
     weatherData: [], //state is assigned below in setState
     jokeData: [],
-    quotesData: [],
+    quotesData: "",
     loading: false,
     inputCity: "",
     inputCountry: "",
+    inputDay: "",
+    inputMonth: ""
     // countrycode: "",
     // city: "",
     // temp: "",
@@ -69,12 +71,26 @@ export default class App extends Component {
     // console.log(this.state.jokeData)
   }
 
-  // onChangeHandlerJoke = (event) => {
-  //   this.setState({
-  //     inputJoke: event.target.value
-  //   })
-  // }
+  callQuotesApi = async () => {
+    let response = await axios.get(`http://127.0.0.1:5000?day=${this.state.inputDay}&month=${this.state.inputMonth}`);
+    console.log(response) //data is inside the object obtained from the API
 
+    this.setState({
+
+      quotesData: response.data.quotes
+
+    })
+    console.log(response.data)
+    console.log(this.state.quotesData)
+  }
+// reusabel, best way how  to do it. in my componet the <input name=""> has to have te name tag
+  onChangeHandlerDate = (event) => {
+    let name = event.target.name;
+    let value = event.target.value
+    this.setState({
+      [name] : value
+    })
+  }
 
   render() {
 
@@ -107,6 +123,25 @@ export default class App extends Component {
 
           <button className="jokeButton" type="button" onClick={this.callJokeApi}> Get a Chuck Norris joke </button>
         </div>
+
+        <div className="quotesComponent">
+
+
+        <div className="quoteInput">
+        {/* name=""  IT IS VERY IMPORTANT, if i want to use onChangeHandlerDate */}
+            <input name="inputDay" className="" value={this.state.inputDay} onChange={this.onChangeHandlerDate} placeholder="Day"></input>
+            <input name="inputMonth" className="" value={this.state.inputMonth} onChange={this.onChangeHandlerDate} placeholder="Month"></input>
+            <button className="quotesButton" type="button" onClick={this.callQuotesApi}>Facts about dates </button>
+          </div>
+          <div className="quotes">
+            <Quotes data={this.state.quotesData} />
+          </div>
+
+
+
+          
+        </div>
+
       </div>
     )
   }

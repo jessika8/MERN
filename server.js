@@ -48,14 +48,36 @@ const getJoke = async () => {
     return data.body
 }
 
+const getQuotes = async (day, month) => {
+
+    let options = {
+        method: 'GET',
+        url: `https://numbersapi.p.rapidapi.com/${month}/${day}/date`,
+        // if i want to see the data, need to be false
+        json: true,
+        headers: {
+            'x-rapidapi-host': 'numbersapi.p.rapidapi.com',
+            'x-rapidapi-key': `${process.env.APPIDD}`
+          }
+    }
+    let data = await promisifiedRequest(options)
+    console.log(data.body)
+    return data.body
+    
+}
+
+
 app.get('/', async (req, res) => { // Name of the page that you want to create a route for. This'/' is the default page
     
     let city = req.query.city
     let countryCode = req.query.countrycode
+    let day = req.query.day
+    let month = req.query.month
     // console.log(city)
     let responseData = {
         'weather': await getWeather(city, countryCode),
-        'joke': await getJoke()
+        'joke': await getJoke(),
+        'quotes': await getQuotes(day, month)
     }
     // let responseDataCountry = await getWeather(countryCode)
     res.send(responseData)
