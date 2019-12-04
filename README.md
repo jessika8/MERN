@@ -14,7 +14,7 @@ I have done a few projects with front-end and back-end. Now I want to connect th
 ## How can I make the project better?
 * Adding a login area using MongoDB for saving the data
 * Adding a third API
-* Improving the design
+* Improving the design to make it more professional
 * Adding more APIs
 
 ## Tech/framework used
