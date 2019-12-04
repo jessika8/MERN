@@ -1,11 +1,11 @@
 # MERN
 
-Project about combining together front-end and back-end using MongoDB, Express.js, React and Node.js. Displaing information from three different APIs
+Project about combining front-end and back-end using MongoDB, Express.js, React and Node.js. Displaying information from three different APIs
 
 ## Motivation
-I have done few projects with front-end and back-end. Now I want to connect them together. MongoDB - login area, which will save your details and takes the user to her profile. Express.js and Node.js for the back-end, to get the information from the API. React for the front-end to display all the information
+I have done a few projects with front-end and back-end. Now I want to connect them. MongoDB - login area, which saves your details and takes the user to her profile. Express.js and Node.js for the back-end, to get the information from the API. React for the front-end to display all the information
 
-## What have i achieved so far?
+## What have I achieved so far?
 * Connected front-end and back-end
 * OpenWeatherMap API is displaying current weather when inserting city and country
 * Chuck Norris API is displaying a joke
@@ -54,7 +54,7 @@ npm i axios
 9. In the MERN-master folder run node server.js
 10. Open your browser at http://localhost:5000/
 11. In the apisreact folder run npm start
-12. It will open the http://localhost:3000/
+12. It opens the http://localhost:3000/
 
 ## Contribute
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
