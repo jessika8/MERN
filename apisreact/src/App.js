@@ -82,11 +82,10 @@ export default class App extends Component {
 
       <div className="all">
       <div>
-      <div className="cityCountryInput">
         <input className="" value={this.state.inputCity} onChange={this.onChangeHandler} placeholder="City"></input>
         <input className="" value={this.state.inputCountry} onChange={this.onChangeHandlerCountry} placeholder="Country"></input>
         <button type="button" onClick={this.callAPI}> Button </button>
-        </div>
+
         <div className="weather">
           <WeatherComponent
             city={this.state.city}
@@ -103,9 +102,8 @@ export default class App extends Component {
           <Jokes data={this.state.jokeData} />
           </div>
           {/* </div> */}
-        <div>
-      <button className="cButton"type="button" onClick={this.callJokeApi}> Chuck Norris Joke  </button>
-      </div>
+
+      <button type="button" onClick={this.callJokeApi}> Button </button>
       </div>
       </div>
     )
