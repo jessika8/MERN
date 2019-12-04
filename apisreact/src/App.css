@@ -51,3 +51,12 @@
   /* text-align: center; */
 }
 
+/* Facts css */
+
+.quotesComponent {
+  border-style: solid;
+  border-color: black;
+  width: 28vw;
+  height: 61vh;
+  text-align: center;
+}

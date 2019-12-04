@@ -83,12 +83,12 @@ export default class App extends Component {
     console.log(response.data)
     console.log(this.state.quotesData)
   }
-// reusabel, best way how  to do it. in my componet the <input name=""> has to have te name tag
+  // reusabel, best way how  to do it. in my componet the <input name=""> has to have te name tag
   onChangeHandlerDate = (event) => {
     let name = event.target.name;
     let value = event.target.value
     this.setState({
-      [name] : value
+      [name]: value
     })
   }
 
@@ -116,80 +116,77 @@ export default class App extends Component {
           </div>
         </div>
         <div className="jokeComponent">
+
+        <button className="jokeButton" type="button" onClick={this.callJokeApi}> Get a Chuck Norris joke </button>
           <div className="joke">
             <Jokes data={this.state.jokeData} />
           </div>
-          {/* </div> */}
-
-          <button className="jokeButton" type="button" onClick={this.callJokeApi}> Get a Chuck Norris joke </button>
         </div>
 
         <div className="quotesComponent">
+            <div className="quoteInput">
+              {/* name=""  IT IS VERY IMPORTANT, if i want to use onChangeHandlerDate */}
+              <input name="inputDay" className="" value={this.state.inputDay} onChange={this.onChangeHandlerDate} placeholder="Day (numbers only)"></input>
+              <input name="inputMonth" className="" value={this.state.inputMonth} onChange={this.onChangeHandlerDate} placeholder="Month (numbers olny)"></input>
+              <button className="quotesButton" type="button" onClick={this.callQuotesApi}>Facts about dates </button>
+            </div>
+            <div className="quotes">
+              <Quotes data={this.state.quotesData} />
+            </div>
 
 
-        <div className="quoteInput">
-        {/* name=""  IT IS VERY IMPORTANT, if i want to use onChangeHandlerDate */}
-            <input name="inputDay" className="" value={this.state.inputDay} onChange={this.onChangeHandlerDate} placeholder="Day"></input>
-            <input name="inputMonth" className="" value={this.state.inputMonth} onChange={this.onChangeHandlerDate} placeholder="Month"></input>
-            <button className="quotesButton" type="button" onClick={this.callQuotesApi}>Facts about dates </button>
+
+
           </div>
-          <div className="quotes">
-            <Quotes data={this.state.quotesData} />
-          </div>
 
-
-
-          
         </div>
-
-      </div>
-    )
-  }
-
-  // trying Monicas version
+        )
+      }
+    
+      // trying Monicas version
   // async componentDidMount() {
-  //   this.setState({
-  //     loading: true
-  //   })
-  //   const response = await axios.get(`http://127.0.0.1:5000`);
-  //   console.log(response) //data is inside the object obtained from the API
+          //   this.setState({
+          //     loading: true
+          //   })
+          //   const response = await axios.get(`http://127.0.0.1:5000`);
+          //   console.log(response) //data is inside the object obtained from the API
 
-  //   this.setState({
-  //     // weatherData: response.data.weather.list[0].main,
-  //     city: response.data.weather.list[0].name,
-  //     temp: response.data.weather.list[0].main.temp,
-  //     humidity:response.data.weather.list[0].main.humidity,
-  //     description:response.data.weather.list[0].weather[0].description,
-  //     jokeData: response.data.joke.value,
-  //     quotesData: response.data.quotes,
-  //     loading: false
-  //   })
-  //   console.log(this.state.jokeData)
-  // }
-  // render() {
-  //   //variables here (inside the render before the return)
-  //   //we can loop inside an array with the method map()
-  //   //map takes a fn inside
-  //   // const manchesterWeather = this.state.weatherData.temp
-  //   const chuckJoke = this.state.jokeData;
-  //   return (
-  //     <div className="all">
-  //       <div className="weather">
-  //       <WeatherComponent
-  //         city={this.state.city}
-  //         temperature={this.state.temp}
-  //         humidity={this.state.humidity}
-  //         description={this.state.description}
-  //         loading={this.state.loading} />
-  //       </div>
-  //       <div className="joke">
-  //       <Jokes data={this.state.jokeData} />
-  //       </div>
-  //       <Quotes quotes={this.state.quotesData}/>
-  //     </div>
-  //   )
-  // }
-}
+          //   this.setState({
+          //     // weatherData: response.data.weather.list[0].main,
+          //     city: response.data.weather.list[0].name,
+          //     temp: response.data.weather.list[0].main.temp,
+          //     humidity:response.data.weather.list[0].main.humidity,
+          //     description:response.data.weather.list[0].weather[0].description,
+          //     jokeData: response.data.joke.value,
+          //     quotesData: response.data.quotes,
+          //     loading: false
+          //   })
+          //   console.log(this.state.jokeData)
+          // }
+          // render() {
+          //   //variables here (inside the render before the return)
+          //   //we can loop inside an array with the method map()
+          //   //map takes a fn inside
+          //   // const manchesterWeather = this.state.weatherData.temp
+          //   const chuckJoke = this.state.jokeData;
+          //   return (
+          //     <div className="all">
+          //       <div className="weather">
+          //       <WeatherComponent
+          //         city={this.state.city}
+          //         temperature={this.state.temp}
+          //         humidity={this.state.humidity}
+          //         description={this.state.description}
+          //         loading={this.state.loading} />
+          //       </div>
+          //       <div className="joke">
+          //       <Jokes data={this.state.jokeData} />
+          //       </div>
+          //       <Quotes quotes={this.state.quotesData}/>
+          //     </div>
+          //   )
+          // }
+        }
 
 
 
