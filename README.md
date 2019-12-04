@@ -9,13 +9,13 @@ I have done a few projects with front-end and back-end. Now I want to connect th
 * Connected front-end and back-end
 * OpenWeatherMap API is displaying current weather when inserting city and country
 * Chuck Norris API is displaying a joke
+* Facts API is displaying a fact about dates
 
 
 ## How can I make the project better?
 * Adding a login area using MongoDB for saving the data
-* Adding a third API
-* Improving the design to make it more professional
 * Adding more APIs
+* Improving the design to make it more professional
 
 ## Tech/framework used
 * Node.js v10.16.3
