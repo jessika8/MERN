@@ -63,7 +63,7 @@ export default class App extends Component {
     this.setState({
 
       jokeData: response.data.joke.value,
-     
+
     })
     // console.log(response.data)
     // console.log(this.state.jokeData)
@@ -81,30 +81,32 @@ export default class App extends Component {
     return (
 
       <div className="all">
-      <div>
-        <input className="" value={this.state.inputCity} onChange={this.onChangeHandler} placeholder="City"></input>
-        <input className="" value={this.state.inputCountry} onChange={this.onChangeHandlerCountry} placeholder="Country"></input>
-        <button type="button" onClick={this.callAPI}> Button </button>
+        <div className="weatherComponent">
+          <div className="cityLocationInput">
+            <input className="" value={this.state.inputCity} onChange={this.onChangeHandler} placeholder="City"></input>
+            <input className="" value={this.state.inputCountry} onChange={this.onChangeHandlerCountry} placeholder="Country"></input>
+            <button className="weatherButton" type="button" onClick={this.callAPI}> Button </button>
+          </div>
 
-        <div className="weather">
-          <WeatherComponent
-            city={this.state.city}
-            country={this.state.countrycode}
-            temperature={this.state.temp}
-            humidity={this.state.humidity}
-            description={this.state.description}
-          // loading={this.state.loading} 
-          />
+          <div className="weather">
+            <WeatherComponent
+              city={this.state.city}
+              country={this.state.countrycode}
+              temperature={this.state.temp}
+              humidity={this.state.humidity}
+              description={this.state.description}
+            // loading={this.state.loading} 
+            />
           </div>
-          </div>
-        <div>
-        <div className="joke">
-          <Jokes data={this.state.jokeData} />
+        </div>
+        <div className="jokeComponent">
+          <div className="joke">
+            <Jokes data={this.state.jokeData} />
           </div>
           {/* </div> */}
 
-      <button type="button" onClick={this.callJokeApi}> Button </button>
-      </div>
+          <button className="jokeButton" type="button" onClick={this.callJokeApi}> Get a Chuck Norris joke </button>
+        </div>
       </div>
     )
   }
