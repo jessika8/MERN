@@ -24,7 +24,6 @@ const getWeather = async (city, countryCode) => { //make our function asynchrono
         uri: `https://api.openweathermap.org/data/2.5/find?q=${city},${countryCode}&units=metric&APPID=${process.env.APPID}`,
         json: true
 
-        //Manchester,uk
     });
     return data.body
 
@@ -85,6 +84,10 @@ app.get('/', async (req, res) => { // Name of the page that you want to create a
     // console.log(await getWeather())
 });
 
+app.listen(5000)
+
+
+
 
 // const getJoke = async () => {
 
@@ -137,7 +140,7 @@ app.get('/', async (req, res) => { // Name of the page that you want to create a
 //     console.log(await getWeather())
 // });
 
-app.listen(5000)
+
 
 
 

@@ -18,11 +18,7 @@ export default class App extends Component {
     inputCountry: "",
     inputDay: "",
     inputMonth: ""
-    // countrycode: "",
-    // city: "",
-    // temp: "",
-    // humidity: "",
-    // description: ""
+  
   }
 
   callAPI = async () => {
@@ -30,14 +26,13 @@ export default class App extends Component {
     console.log(response) //data is inside the object obtained from the API
 
     this.setState({
-      // weatherData: response.data.weather.list[0].main,
+      weatherData: response.data.weather.list[0].main,
       city: response.data.weather.list[0].name,
       //.weather is from app.get
       countrycode: response.data.weather.list[0].sys.country,
       temp: response.data.weather.list[0].main.temp,
       humidity: response.data.weather.list[0].main.humidity,
       description: response.data.weather.list[0].weather[0].description,
-      // jokeData: response.data..joke.value,
       loading: false
     })
     console.log(response.data)
@@ -111,7 +106,6 @@ export default class App extends Component {
               temperature={this.state.temp}
               humidity={this.state.humidity}
               description={this.state.description}
-            // loading={this.state.loading} 
             />
           </div>
         </div>
@@ -133,10 +127,6 @@ export default class App extends Component {
             <div className="quotes">
               <Quotes data={this.state.quotesData} />
             </div>
-
-
-
-
           </div>
 
         </div>
